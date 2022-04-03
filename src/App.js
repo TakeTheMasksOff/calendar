@@ -32,7 +32,7 @@ export default function App() {
 		let name = "";
 		fetch(`https://scheduler-vjabrayilov.herokuapp.com/${e.target.value}`).then(async (res) => {
 			if (res.status == 200) {
-				const data = await res.json();
+				const data = await res.text();
 				console.log(data);
 				setNameInput(data);
 			}
@@ -43,21 +43,44 @@ export default function App() {
 	};
 	return (
 		<>
-			<div style={{ padding: "15px" }}>
+			<div style={{ padding: "10px" }}>
 				<label htmlFor="date">Date</label>
-				<input name="date" value={dateInput} placeholder="YYYY-MM-DD" onChange={handleDateChange} />
+				<input
+					style={{ marginLeft: "10px", marginRight: "30px" }}
+					name="date"
+					value={dateInput}
+					placeholder="YYYY-MM-DD"
+					onChange={handleDateChange}
+				/>
 				<label htmlFor="start-time">Start time</label>
-				<input name="start-time" value={startTimeInput} placeholder="HH:MM" onChange={handleStartTimeChange} />
+				<input
+					style={{ marginLeft: "10px" }}
+					name="start-time"
+					value={startTimeInput}
+					placeholder="HH:MM"
+					onChange={handleStartTimeChange}
+				/>
+			</div>
+			<div style={{ padding: "10px" }}>
 				<label htmlFor="name">Event name</label>
-				<input name="name" value={nameInput} placeholder="event name" onChange={handleNameChange} />
-				<select onChange={selectEventType}>
+				<input
+					style={{ marginLeft: "10px", marginRight: "30px", width: "345px" }}
+					name="name"
+					value={nameInput}
+					placeholder="event name"
+					onChange={handleNameChange}
+				/>
+				<label htmlFor="event-time">Event type</label>
+				<select style={{ marginLeft: "10px" }} name="event-type" onChange={selectEventType}>
 					<option value=""></option>
 					<option value="educational">educational</option>
 					<option value="social">social</option>
 					<option value="recreational">recreational</option>
 					<option value="event">event</option>
 				</select>
-				<button onClick={addEvent}>add event</button>
+			</div>
+			<div style={{ padding: "10px" }}>
+				<button onClick={addEvent}>Add event</button>
 			</div>
 			<div className="App">
 				<FullCalendar
