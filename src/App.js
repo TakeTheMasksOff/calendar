@@ -57,7 +57,7 @@ export default function App() {
 					<option value="recreational">recreational</option>
 					<option value="event">event</option>
 				</select>
-				<button onClick={addEvent}>add smth</button>
+				<button onClick={addEvent}>add event</button>
 			</div>
 			<div className="App">
 				<FullCalendar
